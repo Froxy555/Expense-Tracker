@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import { useGlobalContext } from '../../context/globalContext';
 import History from '../../History/History';
@@ -8,58 +8,80 @@ import Chart from '../Chart/Chart';
 
 function Dashboard() {
     const {totalExpenses,incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext()
+    const [currency, setCurrency] = useState('HUF'); // Az alapértelmezett pénznem forint
 
     useEffect(() => {
-        getIncomes()
-        getExpenses()
-    }, [])
+        getIncomes();
+        getExpenses();
+    }, []);
+
+
+    const currencyOptions = {
+        HUF: { rate: 1, symbol: 'Ft' },
+        USD: { rate: 350, symbol: '$' } // Tegyük fel, hogy 1 USD = 350 HUF
+    };
+
+    const convertCurrency = (amount, currency) => {
+        return (amount / currencyOptions[currency].rate).toLocaleString('en-US');
+    };
 
     return (
         <DashboardStyled>
             <InnerLayout>
-                <h1>All Transactions</h1>
+            <div className="header-with-selector">
+                <h1>Tranzakciók</h1>
+                <div className="currency-selector">
+                    <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
+                        <option value="HUF">Forint (HUF)</option>
+                        <option value="USD">Dollár (USD)</option>
+                    </select>
+                </div>
+                </div>
                 <div className="stats-con">
                     <div className="chart-con">
                         <Chart />
                         <div className="amount-con">
                             <div className="income">
-                                <h2>Total Income</h2>
+                                <h2>Bevétel</h2>
                                 <p>
-                                    {dollar} {totalIncome()}
+                                    {currencyOptions[currency].symbol} {convertCurrency(totalIncome(), currency)}
                                 </p>
+
                             </div>
                             <div className="expense">
-                                <h2>Total Expense</h2>
+                                <h2>Kiadás</h2>
                                 <p>
-                                    {dollar} {totalExpenses()}
+                                    {currencyOptions[currency].symbol} {convertCurrency(totalExpenses(), currency)}
+                                    
                                 </p>
                             </div>
                             <div className="balance">
-                                <h2>Total Balance</h2>
-                                <p>
-                                    {dollar} {totalBalance()}
+                                <h2>Egyenleg</h2>
+                                <p style={{ color: totalBalance() < 0 ? 'red' : 'green' }}>
+                                    {currencyOptions[currency].symbol} {convertCurrency(totalBalance(), currency)}
+                                   
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div className="history-con">
                         <History />
-                        <h2 className="salary-title">Min <span>Salary</span>Max</h2>
+                        <h2 className="salary-title">Min <span>Fizetes</span>Max</h2>
                         <div className="salary-item">
                             <p>
-                                ${Math.min(...incomes.map(item => item.amount))}
+                                Ft {Math.min(...incomes.map(item => item.amount)).toLocaleString('hu-HU')}
                             </p>
                             <p>
-                                ${Math.max(...incomes.map(item => item.amount))}
+                                Ft {Math.max(...incomes.map(item => item.amount)).toLocaleString('hu-HU')}
                             </p>
                         </div>
-                        <h2 className="salary-title">Min <span>Expense</span>Max</h2>
+                        <h2 className="salary-title">Min <span>Költség</span>Max</h2>
                         <div className="salary-item">
                             <p>
-                                ${Math.min(...expenses.map(item => item.amount))}
+                                Ft {Math.min(...expenses.map(item => item.amount)).toLocaleString('hu-HU')}
                             </p>
                             <p>
-                                ${Math.max(...expenses.map(item => item.amount))}
+                                Ft {Math.max(...expenses.map(item => item.amount)).toLocaleString('hu-HU')}
                             </p>
                         </div>
                     </div>
@@ -70,6 +92,39 @@ function Dashboard() {
 }
 
 const DashboardStyled = styled.div`
+
+.header-with-selector {
+    display: flex; /* Flexbox használata az elrendezéshez */
+    align-items: center; /* Elemek függőleges középre igazítása */
+    gap: 20px; /* 20px térköz a cím és a választó között */
+
+    h1 {
+        margin: 0; /* Az alapértelmezett margó eltávolítása, ha szükséges */
+    }
+}
+
+.currency-selector {
+    select {
+        padding: 0.5rem 1rem; 
+        border-radius: 20px; 
+        border: 2px solid white; 
+        background-color: transparent; 
+        color: #222260;
+        font-weight: bold; /* Félkövér szöveg */
+        cursor: pointer; /* A kurzor formájának változtatása választás jelzésére */
+        outline: none; /* Az alapértelmezett körvonal eltávolítása fókuszáláskor */
+        -webkit-appearance: none; /* Eltávolítja a böngésző specifikus stílusokat Safari/Chrome-ban */
+        -moz-appearance: none; /* Eltávolítja a böngésző specifikus stílusokat Firefox-ban */
+    }
+
+    /* Opcionálisan hozzáadható egy lefelé mutató nyíl ikon a legördülő menühöz */
+    select::-ms-expand {
+        display: none; /* Eltávolítja az alapértelmezett lefelé mutató nyilat IE/Edge-ben */
+    }
+
+    
+}
+
     .stats-con{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -104,7 +159,7 @@ const DashboardStyled = styled.div`
                     justify-content: center;
                     align-items: center;
                     p{
-                        color: var(--color-green);
+                        color: var(--color-white);
                         opacity: 0.6;
                         font-size: 4.5rem;
                     }

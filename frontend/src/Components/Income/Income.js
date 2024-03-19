@@ -14,8 +14,8 @@ function Income() {
     return (
         <IncomeStyled>
             <InnerLayout>
-                <h1>Incomes</h1>
-                <h2 className="total-income">Total Income: <span>${totalIncome()}</span></h2>
+                <h1>Bevételek</h1>
+                <h2 className="total-income">Teljes bevétel: <span>Ft {totalIncome().toLocaleString('hu-HU')}</span></h2>
                 <div className="income-content">
                     <div className="form-container">
                         <Form />
@@ -28,7 +28,7 @@ function Income() {
                                 id={_id} 
                                 title={title} 
                                 description={description} 
-                                amount={amount} 
+                                amount={amount.toLocaleString('hu-HU')} 
                                 date={date} 
                                 type={type}
                                 category={category} 

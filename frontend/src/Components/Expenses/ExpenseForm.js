@@ -44,7 +44,7 @@ function ExpenseForm() {
                     type="text" 
                     value={title}
                     name={'title'} 
-                    placeholder="Expense Title"
+                    placeholder="Név"
                     onChange={handleInput('title')}
                 />
             </div>
@@ -52,14 +52,14 @@ function ExpenseForm() {
                 <input value={amount}  
                     type="text" 
                     name={'amount'} 
-                    placeholder={'Expense Amount'}
+                    placeholder={'Összeg'}
                     onChange={handleInput('amount')} 
                 />
             </div>
             <div className="input-control">
                 <DatePicker 
                     id='date'
-                    placeholderText='Enter A Date'
+                    placeholderText='Datum'
                     selected={date}
                     dateFormat="dd/MM/yyyy"
                     onChange={(date) => {
@@ -69,23 +69,23 @@ function ExpenseForm() {
             </div>
             <div className="selects input-control">
                 <select required value={category} name="category" id="category" onChange={handleInput('category')}>
-                    <option value="" disabled >Select Option</option>
-                    <option value="education">Education</option>
-                    <option value="groceries">Groceries</option>
-                    <option value="health">Health</option>
-                    <option value="subscriptions">Subscriptions</option>
-                    <option value="takeaways">Takeaways</option>
-                    <option value="clothing">Clothing</option>  
-                    <option value="travelling">Travelling</option>  
-                    <option value="other">Other</option>  
+                    <option value="" disabled >Opciók</option>
+                    <option value="education">Tanulas</option>
+                    <option value="groceries">Élelmiszerek</option>
+                    <option value="health">Egészség</option>
+                    <option value="subscriptions">Előfizetések</option>
+                    <option value="takeaways">Rendelés</option>
+                    <option value="clothing">Ruházat</option>  
+                    <option value="travelling">Utazás</option>  
+                    <option value="other">Egyéb</option>  
                 </select>
             </div>
             <div className="input-control">
-                <textarea name="description" value={description} placeholder='Add A Reference' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
+                <textarea name="description" value={description} placeholder='jegyzet' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
             </div>
             <div className="submit-btn">
                 <Button 
-                    name={'Add Expense'}
+                    name={'Hozzáadás'}
                     icon={plus}
                     bPad={'.8rem 1.6rem'}
                     bRad={'30px'}

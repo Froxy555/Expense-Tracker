@@ -9,7 +9,7 @@ function History() {
 
     return (
         <HistoryStyled>
-            <h2>Recent History</h2>
+            <h2>Előzmények</h2>
             {history.map((item) =>{
                 const {_id, title, amount, type} = item
                 return (
@@ -24,7 +24,7 @@ function History() {
                             color: type === 'expense' ? 'red' : 'var(--color-green)'
                         }}>
                             {
-                                type === 'expense' ? `-${amount <= 0 ? 0 : amount}` : `+${amount <= 0 ? 0: amount}`
+                                type === 'expense' ? `-Ft ${amount.toLocaleString('hu-HU') <= 0 ? 0 : amount.toLocaleString('hu-HU')}` : `+Ft ${amount.toLocaleString('hu-HU') <= 0 ? 0: amount.toLocaleString('hu-HU')}`
                             }
                         </p>
                     </div>
