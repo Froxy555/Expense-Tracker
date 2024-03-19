@@ -74,10 +74,10 @@ function Form() {
                     <option value="freelancing">Szabadúszó munkák</option>
                     <option value="investments">Befektetések</option>
                     <option value="stocks">Stocks</option>
-                    <option value="bitcoin">Bitcoin</option>
-                    <option value="bank">Bank Transfer</option>  
-                    <option value="tv">Ösztöndíj</option>  
-                    <option value="other">Other</option>  
+                    <option value="bitcoin">Részvények</option>
+                    <option value="bank">Ajandék pénz</option>  
+                    <option value="">Ösztöndíj</option>  
+                    <option value="other">Egyéb</option>  
                 </select>
             </div>
             <div className="input-control">

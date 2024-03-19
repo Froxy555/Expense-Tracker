@@ -12,7 +12,7 @@ function Navigation({active, setActive}) {
                 <img src={avatar} alt="" />
                 <div className="text">
                     <h2>Tamas</h2>
-                    <p>penze</p>
+                    <p>pénze</p>
                 </div>
             </div>
             <ul className="menu-items">
@@ -30,6 +30,7 @@ function Navigation({active, setActive}) {
             <div className="bottom-nav">
                 <li>
                     {signout} Kijelentkezes
+                    <p>meg nincs kesz</p>
                 </li>
             </div>
         </NavStyled>
@@ -37,6 +38,18 @@ function Navigation({active, setActive}) {
 }
 
 const NavStyled = styled.nav`
+
+.bottom-nav {
+    li {
+       
+
+        p {
+            font-size: 0.75rem; 
+            
+        }
+    }
+}
+
     padding: 2rem 1.5rem;
     width: 374px;
     height: 100%;
