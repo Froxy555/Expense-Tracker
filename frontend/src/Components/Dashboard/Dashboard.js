@@ -18,7 +18,7 @@ function Dashboard() {
 
     const currencyOptions = {
         HUF: { rate: 1, symbol: 'Ft' },
-        USD: { rate: 350, symbol: '$' } // Tegyük fel, hogy 1 USD = 350 HUF
+        USD: { rate: 350, symbol: '$' } 
     };
 
     const convertCurrency = (amount, currency) => {
@@ -44,21 +44,21 @@ function Dashboard() {
                             <div className="income">
                                 <h2>Bevétel</h2>
                                 <p>
-                                    {currencyOptions[currency].symbol} {convertCurrency(totalIncome(), currency)}
+                                     {convertCurrency(totalIncome(), currency)} {currencyOptions[currency].symbol}
                                 </p>
 
                             </div>
                             <div className="expense">
                                 <h2>Kiadás</h2>
                                 <p>
-                                    {currencyOptions[currency].symbol} {convertCurrency(totalExpenses(), currency)}
+                                     {convertCurrency(totalExpenses(), currency)} {currencyOptions[currency].symbol}
                                     
                                 </p>
                             </div>
                             <div className="balance">
                                 <h2>Egyenleg</h2>
                                 <p style={{ color: totalBalance() < 0 ? 'red' : 'green' }}>
-                                    {currencyOptions[currency].symbol} {convertCurrency(totalBalance(), currency)}
+                                     {convertCurrency(totalBalance(), currency)} {currencyOptions[currency].symbol}
                                    
                                 </p>
                             </div>
@@ -69,19 +69,19 @@ function Dashboard() {
                         <h2 className="salary-title">Min <span>Fizetes</span>Max</h2>
                         <div className="salary-item">
                             <p>
-                                Ft {Math.min(...incomes.map(item => item.amount)).toLocaleString('hu-HU')}
+                                {Math.min(...incomes.map(item => item.amount)).toLocaleString('hu-HU')} Ft
                             </p>
                             <p>
-                                Ft {Math.max(...incomes.map(item => item.amount)).toLocaleString('hu-HU')}
+                                 {Math.max(...incomes.map(item => item.amount)).toLocaleString('hu-HU')} Ft
                             </p>
                         </div>
                         <h2 className="salary-title">Min <span>Költség</span>Max</h2>
                         <div className="salary-item">
                             <p>
-                                Ft {Math.min(...expenses.map(item => item.amount)).toLocaleString('hu-HU')}
+                                 {Math.min(...expenses.map(item => item.amount)).toLocaleString('hu-HU')} Ft
                             </p>
                             <p>
-                                Ft {Math.max(...expenses.map(item => item.amount)).toLocaleString('hu-HU')}
+                                 {Math.max(...expenses.map(item => item.amount)).toLocaleString('hu-HU')} Ft
                             </p>
                         </div>
                     </div>

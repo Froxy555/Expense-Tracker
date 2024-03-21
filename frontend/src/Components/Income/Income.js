@@ -15,7 +15,7 @@ function Income() {
         <IncomeStyled>
             <InnerLayout>
                 <h1>Bevételek</h1>
-                <h2 className="total-income">Teljes bevétel: <span>Ft {totalIncome().toLocaleString('hu-HU')}</span></h2>
+                <h2 className="total-income">Teljes bevétel: <span> {totalIncome().toLocaleString('hu-HU')} Ft</span></h2>
                 <div className="income-content">
                     <div className="form-container">
                         <Form />

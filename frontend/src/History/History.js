@@ -24,7 +24,7 @@ function History() {
                             color: type === 'expense' ? 'red' : 'var(--color-green)'
                         }}>
                             {
-                                type === 'expense' ? `-Ft ${amount.toLocaleString('hu-HU') <= 0 ? 0 : amount.toLocaleString('hu-HU')}` : `+Ft ${amount.toLocaleString('hu-HU') <= 0 ? 0: amount.toLocaleString('hu-HU')}`
+                                type === 'expense' ? `-Ft ${amount.toLocaleString('hu-HU') <= 0 ? 0 : amount.toLocaleString('hu-HU')}` : `+ ${amount.toLocaleString('hu-HU') <= 0 ? 0: amount.toLocaleString('hu-HU')} Ft`
                             }
                         </p>
                     </div>

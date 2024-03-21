@@ -59,7 +59,7 @@ function Form() {
             <div className="input-control">
                 <DatePicker 
                     id='date'
-                    placeholderText='Datum'
+                    placeholderText='Dátum'
                     selected={date}
                     dateFormat="dd/MM/yyyy"
                     onChange={(date) => {
@@ -81,7 +81,7 @@ function Form() {
                 </select>
             </div>
             <div className="input-control">
-                <textarea name="description" value={description} placeholder='jegyzet' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
+                <textarea name="description" value={description} placeholder='Jegyzet' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
             </div>
             <div className="submit-btn">
                 <Button 

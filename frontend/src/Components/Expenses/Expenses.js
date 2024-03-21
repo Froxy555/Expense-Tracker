@@ -15,8 +15,8 @@ function Expenses() {
     return (
         <ExpenseStyled>
             <InnerLayout>
-                <h1>Kiadasok</h1>
-                <h2 className="total-income">Total Expense: <span>Ft {totalExpenses()}</span></h2>
+                <h1>Kiadások</h1>
+                <h2 className="total-income">Teljes kiadás: <span>{totalExpenses().toLocaleString('hu-HU')} Ft</span></h2>
                 <div className="income-content">
                     <div className="form-container">
                         <ExpenseForm />
