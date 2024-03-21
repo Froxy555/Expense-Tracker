@@ -1,0 +1,1 @@
+![Főoldal](expense/frontend/src/img/expense1.PNG)
